@@ -1,14 +1,23 @@
 # Multiple File Reading
 
-Country_List = []
-UserInput = input('> Write in the countries to be analyzed:\n')
-UserInput.replace(' ', '')
-UserInput.split(',')
-Country_List.append(UserInput)
+UserString = input('> Write in the countries to be analyzed:\n')
+UserList = UserString.replace(' ', '').split(',')
 
-print(Country_List)
+for country in UserList:
+    data = open("{}.csv".format(country))
+    CountryRead = data.readlines()
 
-for i in Country_List:
-    data = open(f'{i}.csv')
+    year = []
+    population = []
+
+    for l in CountryRead[1:]:
+        l = l.replace('"', '')
+        a = l.split(',')
+        year.append(int(a[0]))
+        population.append(float(a[1]))
+    
+    print(year)
+    print(population)
+
 
 
