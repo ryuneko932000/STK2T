@@ -1,11 +1,12 @@
 # Multiple File Reading
+import matplotlib.pyplot as plt
+
 
 UserString = input('> Write in the countries to be analyzed:\n')
 UserList = UserString.replace(' ', '').split(',')
 
 for country in UserList:
-    data = open("{}.csv".format(country))
-    CountryRead = data.readlines()
+    CountryRead = open("{}.csv".format(country)).readlines()
 
     year = []
     population = []
@@ -15,9 +16,10 @@ for country in UserList:
         a = l.split(',')
         year.append(int(a[0]))
         population.append(float(a[1]))
-    
-    print(year)
-    print(population)
+
+    print(country, year, population)
+    plt.plot(year, population)
+    plt.show()
 
 
 

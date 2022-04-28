@@ -2,10 +2,9 @@
 
 # Open one country
 fid = input('> What country should be analyzed?\n')
-data = open("{}.csv".format(fid))
 
 # Read lines of document
-Country = data.readlines()
+Country = open("{}.csv".format(fid)).readlines()
 
 # Create empty lists
 year = []
